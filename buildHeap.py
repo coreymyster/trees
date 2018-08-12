@@ -2,11 +2,13 @@
 
 from random import *
 
+# Creates the BinaryHeap
 class BinaryHeap():
     def __init__(self):
         self.heap = [0]
         self.currentSize = 0
     
+    # Organizes the list passed in and percolates larger values down into the tree
     def percDown(self,i):
         while (i * 2) <= self.currentSize:
             mc = self.minChild(i)
@@ -16,6 +18,7 @@ class BinaryHeap():
                 self.heap[mc] = tmp
             i = mc
 
+    # Identifies the minimum child and returns the value of the child
     def minChild(self,i):
         if i * 2 + 1 > self.currentSize:
             return i * 2
@@ -24,7 +27,8 @@ class BinaryHeap():
                 return i * 2
             else:
                 return i * 2 + 1
-        
+     
+    # Build the heap from a random list passed in 
     def buildHeap(self,alist):
         i = len(alist) // 2
         self.currentSize = len(alist)
@@ -33,6 +37,7 @@ class BinaryHeap():
             self.percDown(i)
             i = i - 1
     
+    # For display purposes to make it easier to read objects of the BinaryHeap class
     def __repr__(self):
         return str(self.heap)
             
