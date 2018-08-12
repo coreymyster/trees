@@ -14,6 +14,12 @@ def listAdjust(alist):
     count = len(brokenList)
     
     while i < count:
+        
+        if brokenList[i] == ' ':
+            brokenList.pop(i)
+            count = count - 1
+            #i = i + 1
+        
         # Checks if i and the item in the next index are both numerical digits
         # If so combine them and pop the next item in the list
         if brokenList[i].isdigit() and brokenList[i + 1].isdigit():
@@ -31,6 +37,7 @@ def buildParseTree(fpexp):
     eTree = BinaryTree('')
     pStack.push(eTree)
     currentTree = eTree
+    # Checks if item passed in from 'fpexp' contains integers or mathemateical operators
     for i in breakList:
         if i == '(':
             currentTree.insertLeft('')
